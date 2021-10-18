@@ -1,6 +1,6 @@
 # MakersBnB
 
-Fork of the MakersBnB Group Project by Alex, Delia, Ewa, Xia and Sasha.
+MakersBnB Group Project by Alex, Delia, Ewa, Xia and Sasha.
 
 In this project we are tasked to build a web application that allows users to list spaces they have available, and to hire spaces for the night.
 
@@ -71,6 +71,16 @@ If time periods overlap, the alternate requests will be denied.
 - [ ] Their request to book a space is denied
 - [ ] A ‘chat’ functionality once a space has been booked, allowing users whose space-booking request has been confirmed to chat with the user that owns that space
 - [ ] Basic payment implementation though Stripe.
+
+### How to Setup
+
+1. Fork & clone this Repo
+2. Run `bundle`
+3. Follow the files in db/migrations to setup database
+
+### Project Planning
+
+[MVP Plan Document](https://docs.google.com/document/d/1YVyuk1QwdJ5Y2rO0yJztMdj6gMfILxxr_OBLLilKB5c/edit#)
 
 ### Domain Modelling
 
