@@ -73,4 +73,4 @@ If time periods overlap, the alternate requests will be denied.
 
 ### Domain Modelling
 
-![Diagram](link)
+![Class Diagram](https://lucid.app/publicSegments/view/b27c7c58-1867-4130-a48b-47874648b003/image.png)
