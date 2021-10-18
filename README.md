@@ -85,3 +85,10 @@ If time periods overlap, the alternate requests will be denied.
 ### Domain Modelling
 
 ![Class Diagram](https://lucid.app/publicSegments/view/b27c7c58-1867-4130-a48b-47874648b003/image.png)
+
+### MVC Diagrams
+
+![View Spaces](https://github.com/feedXia/Makersbnb/blob/20afbe59944a5181ca8d1cf7c2b85f2a0b37262d/images/View%20spaces%20model.png)
+
+![Add Spaces](https://github.com/feedXia/Makersbnb/blob/20afbe59944a5181ca8d1cf7c2b85f2a0b37262d/images/Add%20spaces%20model.png)
+
