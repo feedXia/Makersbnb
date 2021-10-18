@@ -2,7 +2,7 @@
 
 Fork of the MakersBnB Group Project by Alex, Delia, Ewa, Xia and Sasha.
 
-In this project we are tasked to builda web application that allows users to list spaces they have available, and to hire spaces for the night.
+In this project we are tasked to build a web application that allows users to list spaces they have available, and to hire spaces for the night.
 
 ### User stories
 
