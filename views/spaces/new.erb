@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Add new space</title>
 </head>
 <body>
-<h1>List a Space</h1>
-<form action="/spaces/new" method="post">
-    <input type="text" name="name" maxlength="60" required>
-    <textarea name="description" maxlength="240" rows="4" cols="50" required></textarea>
-    <input type="number" name="price_night" required>
-    <input type="submit" value="Add Space">
-</form>
+    <h1>List a Space</h1>
+    <form action="/spaces/new" method="post">
+        <label for="name">Name: </label>
+        <input type="text" name="name" maxlength="60" required placeholder="Cosy Apartment">
+        <label for="description">Description: </label>
+        <textarea name="description" maxlength="240" rows="4" cols="50" required placeholder="Tell us a bit more about your space"></textarea>
+        <label for="price_night">Price Per Night: </label>
+        <input type="number" name="price_night" required placeholder="50">
+        <input type="submit" value="Add Space">
+    </form>
 </body>
 </html>

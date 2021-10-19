@@ -1,0 +1,9 @@
+h1 {
+  color: blueviolet;
+}
+
+input,
+textarea {
+  display: block;
+  margin-bottom: 2em;
+}
