@@ -8,6 +8,11 @@
 </head>
 <body>
 <h1>List a Space</h1>
-    
+<form action="/spaces/new" method="post">
+    <input type="text" name="name" maxlength="60" required>
+    <textarea name="description" maxlength="240" rows="4" cols="50" required></textarea>
+    <input type="number" name="price_night" required>
+    <input type="submit" value="Add Space">
+</form>
 </body>
 </html>
