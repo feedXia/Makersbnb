@@ -1,10 +1,10 @@
 
 <body>
-  <% @result.each do |result| %>
+  <% @spaces.each do |space| %>
     <div>
-      <div style="height: 50px; border: 2px solid black;"><%= result['name'] %></div>
-      <div style="height: 50px; border: 2px solid black;"><%= result['description'] %></div>
-      <div style="height: 50px; border: 2px solid black;"><%= result['price'] %></div>
+      <div style="height: 50px; border: 2px solid black;"><%= space['name'] %></div>
+      <div style="height: 50px; border: 2px solid black;"><%= space['description'] %></div>
+      <div style="height: 50px; border: 2px solid black;"><%= space['price'] %></div>
     </div>
   <% end %>
 </body>

@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'pg'
-require 'space'
+require_relative 'lib/space'
 
 class MakersBnB < Sinatra::Base
   configure :development do
