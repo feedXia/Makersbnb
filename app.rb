@@ -20,9 +20,9 @@ class MakersBnB < Sinatra::Base
     result = params[:name] + "\n" + params[:description] + "\n" + params[:price_night]
   end
 
-  get "/spaces" do
+  get "/spaces/" do
     @spaces = Space.all
-    erb :spaces
+    erb :"spaces/index"
   end
 
   run! if app_file == $0
