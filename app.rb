@@ -8,8 +8,16 @@ class MakersBnB < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  get '/' do
-    'Hello World'
+  get "/" do
+    "Hello World"
+  end
+
+  get "/spaces/new" do
+    erb :"/spaces/new"
+  end
+
+  post "/spaces/new" do
+    result = params[:name] + "\n" + params[:description] + "\n" + params[:price_night]
   end
 
   get "/spaces" do

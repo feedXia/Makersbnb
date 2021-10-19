@@ -78,6 +78,16 @@ If time periods overlap, the alternate requests will be denied.
 2. Run `bundle`
 3. Follow the files in db/migrations to setup database
 
+### To set up a database
+Connect to `psql` and create the `makers_bnb` and `makers_bnb_test` databases:
+```
+CREATE DATABASE makers_bnb_test;
+CREATE DATABASE makers_bnb;
+```
+To set up the appropriate tables, connect to each database in psql (e.g. `\c makers_bnb`) and run the SQL scripts in the db/migrations folder in the given order.
+
+
+
 ### Project Planning
 
 [MVP Plan Document](https://docs.google.com/document/d/1YVyuk1QwdJ5Y2rO0yJztMdj6gMfILxxr_OBLLilKB5c/edit#)
