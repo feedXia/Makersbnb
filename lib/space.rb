@@ -6,8 +6,6 @@ class Space
       connection.exec("INSERT INTO spaces (name, description, price) VALUES ('Alex House', 'Spacious and cosy', 20);")
     end
   
-    result = connection.exec('SELECT * FROM spaces')
-
-    # finish this
+    result = connection.exec("SELECT * FROM spaces;")
   end
 end

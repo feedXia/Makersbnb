@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'pg'
+require 'space'
 
 class MakersBnB < Sinatra::Base
   configure :development do
@@ -12,11 +13,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/spaces" do
-    connection = PG.connect(dbname: 'spaces_test')
-    connection.exec("TRUNCATE spaces;")
-    connection.exec("INSERT INTO spaces (name, description, price) VALUES ('Alex House', 'Spacious and cosy', 20);")
-
-    @result = connection.exec('SELECT * FROM spaces')
+    @spaces = Space.all
     erb :spaces
   end
 
