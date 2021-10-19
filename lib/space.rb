@@ -2,17 +2,19 @@ require 'pg'
 
 class Space
   def self.all
-    result = nil
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'makers_bnb_test')
-      connection.exec("TRUNCATE spaces;")
-      connection.exec("INSERT INTO spaces (name, description, price) VALUES ('Alex House', 'Spacious and cosy', 20);")
-      connection.exec("INSERT INTO spaces (name, description, price) VALUES ('Ewa Mansion', 'Modern and well-lit', 100);")
-      result = connection.exec("SELECT * FROM spaces;")
-    else
-      connection = PG.connect(dbname: 'makers_bnb')
-      result = connection.exec("SELECT * FROM spaces;")
-    end
+    connection = Space.connect_db
+    result = connection.exec("SELECT * FROM spaces;")
     return result
+  end
+
+  def self.add(name:, description:, price:)
+    connection = Space.connect_db
+    query = "INSERT INTO spaces (name, description, price) VALUES($1, $2, $3);"
+    connection.exec(query, [name, description, price])
+  end
+
+  def self.connect_db
+    db_name = ENV['ENVIRONMENT'] == 'test' ? 'makers_bnb_test' : 'makers_bnb'
+    return PG.connect(dbname: db_name)
   end
 end
