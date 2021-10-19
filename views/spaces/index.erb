@@ -15,18 +15,16 @@
   <main class="spaces">
   <h1 class="title">Explore our Spaces</h1>
   <% @spaces.each do |space| %>
-    <section>
-      <div class="space_card">
-        <h4 class="space_name">
-          <%= space['name'] %>
-        </h4>
-        <p class="space_description">
-          <%= space['description'] %>
-        </p>
-        <span class="space_price">
-          £<%= space['price'] %> per night
-        </span>
-      </div>
+    <section class="space_card">
+      <h4 class="space_name">
+        <%= space['name'] %>
+      </h4>
+      <p class="space_description">
+        <%= space['description'] %>
+      </p>
+      <span class="space_price">
+        £<%= space['price'] %> per night
+      </span>
     </section>
   <% end %>
   </main>
