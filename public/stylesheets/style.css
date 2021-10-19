@@ -1,3 +1,7 @@
+body {
+  font-family: sans-serif;
+}
+
 h1 {
   color: blueviolet;
 }
@@ -6,4 +10,25 @@ input,
 textarea {
   display: block;
   margin-bottom: 2em;
+}
+
+.spaces {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.space_card {
+  background-color: aliceblue;
+  border-radius: .25rem;
+  border: 1px solid navy;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 80vw;
+}
+.space_name {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: navy;
+  margin: 0;
 }
