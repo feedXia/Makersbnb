@@ -56,7 +56,7 @@ If time periods overlap, the alternate requests will be denied.
 
 ### Nice-to-haves
 
-- Users should receive an email whenever one of the following happens:
+- [ ] Users should receive an email whenever one of the following happens:
 - [ ] They sign up
 - [ ] They create a space
 - [ ] They update a space
@@ -65,7 +65,7 @@ If time periods overlap, the alternate requests will be denied.
 - [ ] They request to book a space
 - [ ] Their request to book a space is confirmed
 - [ ] Their request to book a space is denied
-- Users should receive a text message to a provided number whenever one of the following happens:
+- [ ] Users should receive a text message to a provided number whenever one of the following happens:
 - [ ] A user requests to book their space
 - [ ] Their request to book a space is confirmed
 - [ ] Their request to book a space is denied
