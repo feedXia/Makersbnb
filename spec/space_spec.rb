@@ -26,7 +26,7 @@ RSpec.describe Space do
 
   describe '#add' do
     it 'adds a new space row to the db' do
-      Space.add(name: "Hagrid's Hut", description: "Magical place, close to the nature.", price: 36)
+      add_space(name: "Hagrid's Hut", description: "Magical place, close to the nature.", price: 36)
       spaces = show_all_spaces
       
       expect(spaces[0]).to eq({
