@@ -79,14 +79,15 @@ If time periods overlap, the alternate requests will be denied.
 3. Follow the files in db/migrations to setup database
 
 ### To set up a database
+
 Connect to `psql` and create the `makers_bnb` and `makers_bnb_test` databases:
+
 ```
 CREATE DATABASE makers_bnb_test;
 CREATE DATABASE makers_bnb;
 ```
+
 To set up the appropriate tables, connect to each database in psql (e.g. `\c makers_bnb`) and run the SQL scripts in the db/migrations folder in the given order.
-
-
 
 ### Project Planning
 
@@ -102,3 +103,6 @@ To set up the appropriate tables, connect to each database in psql (e.g. `\c mak
 
 ![Add Spaces](https://github.com/feedXia/Makersbnb/blob/20afbe59944a5181ca8d1cf7c2b85f2a0b37262d/images/Add%20spaces%20model.png)
 
+![Individual Space Pages](https://github.com/feedXia/Makersbnb/blob/ebb772d740490b3f0a75b05ee455319aa847de4b/public/images/Individual%20space%20pages%20model.png)
+
+![Request to Book](https://github.com/feedXia/Makersbnb/blob/ebb772d740490b3f0a75b05ee455319aa847de4b/public/images/Request%20to%20book%20model.png)
