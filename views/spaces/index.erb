@@ -17,7 +17,7 @@
   <% @spaces.each do |space| %>
     <section class="space_card">
       <h4 class="space_name">
-        <%= space['name'] %>
+        <a href="/spaces/<%= space['id']%>"><%= space['name']%></a>
       </h4>
       <p class="space_description">
         <%= space['description'] %>
