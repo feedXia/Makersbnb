@@ -22,9 +22,3 @@ def add_space(name:, description:, price:)
   query = "INSERT INTO spaces (name, description, price) VALUES($1, $2, $3);"
   connection.exec(query, [name, description, price])
 end
-
-def persistent_id(id:)
-  connection = PG.connect(dbname: "makers_bnb_test")
-  result = connection.exec("SELECT * FROM spaces WHERE id=#{id};")
-  return result
-end
