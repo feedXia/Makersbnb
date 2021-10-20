@@ -1,0 +1,8 @@
+  <main class="spaces">
+  <h1 class="title">This is your current booking</h1>
+  <% @space.each do |space| %>
+    <%= space['name'] %>
+    <%= space['description'] %>
+    <%= space['price'] %>
+  <% end %>
+  </main>

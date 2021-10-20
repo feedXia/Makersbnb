@@ -1,4 +1,4 @@
-require 'pg'
+require "pg"
 
 class Space
   def self.all
@@ -14,7 +14,13 @@ class Space
   end
 
   def self.connect_db
-    db_name = ENV['ENVIRONMENT'] == 'test' ? 'makers_bnb_test' : 'makers_bnb'
+    db_name = ENV["ENVIRONMENT"] == "test" ? "makers_bnb_test" : "makers_bnb"
     return PG.connect(dbname: db_name)
+  end
+
+  def self.find(id:)
+    connection = Space.connect_db
+    result = connection.exec("SELECT * FROM spaces WHERE id=#{id};")
+    return result
   end
 end
