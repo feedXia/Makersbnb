@@ -3,6 +3,8 @@ require 'space'
 RSpec.describe Space do
   describe "#all" do
     it 'returns no rows if db is empty' do
+      # p "Space.all:"
+      # p Space.all
       expect(Space.all.values).to eq []
     end
 
