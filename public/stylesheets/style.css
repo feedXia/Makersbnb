@@ -6,6 +6,12 @@ h1 {
   color: blueviolet;
 }
 
+h2 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 input,
 textarea {
   display: block;
@@ -20,7 +26,7 @@ textarea {
 }
 .space_card {
   background-color: aliceblue;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   border: 1px solid navy;
   padding: 1rem;
   margin: 1rem 0;

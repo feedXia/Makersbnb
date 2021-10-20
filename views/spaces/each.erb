@@ -1,8 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About This Space</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
   <main class="spaces">
-  <h1 class="title">This is your current booking</h1>
-  <% @space.each do |space| %>
-    <%= space['name'] %>
-    <%= space['description'] %>
-    <%= space['price'] %>
-  <% end %>
+  <h1 class="title">About This Space</h1>
+  <h2><%= @space[0]['name'] %></h2>
+  <h4>Total: £<%= @space[0]['price'] %></h4>
+  
+  <div>
+    <p><%= @space[0]['description'] %></p>
+  </div>
+  
   </main>
+</body>
+</html>
+  
