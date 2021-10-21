@@ -1,6 +1,19 @@
-<main class="space-info">
+<main class="spaces">
 <h1 class="title">Properties to match your search: </h1>
-  <% @space_available.each do |space| %>
-   <%= space['name']%>
-    <% end %>
+<% @space_available.each do |space| %>
+    <section class="space_card">
+      <h4 class="space_name">
+       <%= space['name']%>
+      </h4>
+     
+      <p class="space_description">
+        <%= space['description'] %>
+      </p>
+
+      <span class="space_price">
+        £<%= space['price'] %> per night
+      </span>
+   
+    </section>
+  <% end %>
 </main>
