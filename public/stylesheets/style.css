@@ -38,3 +38,7 @@ textarea {
   color: navy;
   margin: 0;
 }
+
+.pagelink {
+  align-items: right;
+}

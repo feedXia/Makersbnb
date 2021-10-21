@@ -36,5 +36,9 @@ class MakersBnB < Sinatra::Base
     erb :"spaces/each"
   end
 
+  get "/request" do
+    erb :"request/index"
+  end
+
   run! if app_file == $0
 end

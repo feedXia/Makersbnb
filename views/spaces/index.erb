@@ -3,14 +3,21 @@
   <% @spaces.each do |space| %>
     <section class="space_card">
       <h4 class="space_name">
-        <a href="/spaces/<%= space['id']%>"><%= space['name']%></a>
+       <%= space['name']%>
       </h4>
+     
       <p class="space_description">
         <%= space['description'] %>
       </p>
+
       <span class="space_price">
         £<%= space['price'] %> per night
       </span>
+
+      <p>
+      <a href="/spaces/<%= space['id']%>">See space details</a>
+      </p>
+
     </section>
   <% end %>
   </main>
