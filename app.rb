@@ -47,8 +47,10 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/user/new" do
-    User.add(name: params[:name], email: params[:email], password: params[:password])
-    "#{params[:name]}, thank you for registration!"
+    user = User.add(name: params[:name], email: params[:email], password: params[:password])
+    session[:user_id] = user.id
+    redirect "/"
+    # "#{params[:name]}, thank you for registration!"
   end
 
   get "/user/login" do
@@ -56,8 +58,15 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/user/login" do
-    login_success = User.login(email: params[:email], password: params[:password]) 
-    login_success ? "Log in success!" : "email or password is wrong :("
+    user = User.login(email: params[:email], password: params[:password])
+    if user
+      session[:user_id] = user.id
+      redirect "/"
+    else
+      "email or password is wrong :("
+    end
+
+    # login_success ? "Log in success!" : "email or password is wrong :("
   end
 
   run! if app_file == $0

@@ -9,14 +9,19 @@ class User
   def self.login(email:, password:)
     query = "SELECT * FROM users WHERE email = $1;"
     result = DatabaseConnection.query(query, [email])
-    users = result.map do |user|
-      User.new(name: user["name"], email: user["email"], password: user["password"], id: user["id"])
-    end
-    return users.length == 1 && users[0].correct_password?(password)
+    return unless result.any?
+    user = User.new(
+      id: result[0]["id"],
+      email: result[0]["email"],
+      name: result[0]["name"],
+      password: result[0]["password"]
+    )
+    return user.correct_password?(password) ? user : nil
   end
 
   attr_reader :name, :email, :id
-  def initialize(name:, email:, id:, password:) 
+
+  def initialize(name:, email:, id:, password:)
     @name = name
     @email = email
     @id = id
