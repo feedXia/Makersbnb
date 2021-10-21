@@ -1,8 +1,8 @@
-require 'sinatra/base'
-require 'sinatra/reloader'
-require 'pg'
-require_relative 'lib/space'
-require_relative 'database_connection_setup'
+require "sinatra/base"
+require "sinatra/reloader"
+require "pg"
+require_relative "lib/space"
+require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
   configure :development do
@@ -23,10 +23,10 @@ class MakersBnB < Sinatra::Base
       description: params[:description],
       price: params[:price_night],
     )
-    redirect "/spaces/"
+    redirect "/spaces"
   end
 
-  get "/spaces/" do
+  get "/spaces" do
     @spaces = Space.all
     erb :"spaces/index", :layout => :layout
   end
@@ -36,8 +36,9 @@ class MakersBnB < Sinatra::Base
     erb :"spaces/each"
   end
 
-  get "/request" do
-    erb :"request/index"
+  get "/requests" do
+    @spaces = Space.all
+    erb :"requests/index"
   end
 
   run! if app_file == $0
