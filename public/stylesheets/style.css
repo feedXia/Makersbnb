@@ -1,8 +1,10 @@
 body {
-  font-family: sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
 }
 
 h1 {
+  font-size: 3em;
   text-align: center;
   color: blueviolet;
 }
@@ -19,14 +21,24 @@ textarea {
   margin-bottom: 2em;
 }
 
-button {
+button,
+input[type="submit"] {
   padding: 1.5em 2.5em;
+  margin-bottom: 2em;
   background-color: blueviolet;
   border: 2px solid #c4c4c4;
-  border-radius: 5px;
+  border-radius: 1rem;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
+
+.nav-main {
+  position: absolute;
+  width: 100%;
+  height: 5em;
+}
+
 .spaces {
   display: flex;
   flex-direction: column;
@@ -35,7 +47,7 @@ button {
 }
 .space_card {
   background-color: aliceblue;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   border: 1px solid navy;
   padding: 1rem;
   margin: 1rem 0;
@@ -70,7 +82,7 @@ button {
   padding: 1rem;
   margin-left: 5rem;
   background-color: aliceblue;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   border: 1px solid navy;
 }
 
@@ -81,6 +93,59 @@ button {
   padding: 1rem;
   margin-right: 5rem;
   background-color: aliceblue;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   border: 1px solid navy;
+}
+
+.homepage_heading {
+  padding-top: 3.5em;
+}
+
+.user_account {
+  width: 80%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sign_up,
+.log_in {
+  display: inline-block;
+  text-align: center;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.search_term {
+  width: 50%;
+  border: 1px solid grey;
+  border-right: none;
+  padding: 1em;
+  height: 2rem;
+  border-radius: 1rem 0 0 1rem;
+  outline: none;
+  color: #000000;
+}
+
+.search_button {
+  width: 10%;
+  height: 2rem;
+  padding: 0.6em 0 1.56em 0;
+  border: 1px solid blueviolet;
+  text-align: center;
+  color: white;
+  border-radius: 0 1rem 1rem 0;
+  border-left: none;
+  cursor: pointer;
+  font-size: 1.7em;
+}
+
+.wrap {
+  padding: 1.5em 0 2em 0;
+  width: 60%;
+  margin-left: 31.5%;
 }
