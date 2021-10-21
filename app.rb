@@ -2,6 +2,7 @@ require "sinatra/base"
 require "sinatra/reloader"
 require "pg"
 require_relative "lib/space"
+require_relative "lib/user"
 require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
@@ -33,12 +34,21 @@ class MakersBnB < Sinatra::Base
 
   get "/spaces/:id" do
     @space = Space.find(id: params[:id])
-    erb :"spaces/each"
+    erb :"spaces/each", :layout => :layout
   end
 
   get "/requests" do
     @spaces = Space.all
     erb :"requests/index"
+  end
+
+  get "/user/new" do
+    erb :"user/new"
+  end
+
+  post "/user/new" do
+    User.add(name: params[:name], email: params[:email], password: params[:password])
+    "#{params[:name]}, thank you for registration!"
   end
 
   run! if app_file == $0
