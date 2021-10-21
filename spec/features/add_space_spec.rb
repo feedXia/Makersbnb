@@ -11,7 +11,10 @@ feature "Adding space" do
 
   scenario "Page displays a form that user can input onto" do
     visit("/spaces/new")
-    add_space(name: "Alex House", description: "Spacious and cosy", price: 20)
+    fill_in "name", with: "Central apartment"
+    fill_in "description", with: "Great apartment in city centre, 2 minute walk from the tube station"
+    fill_in "price_night", with: "50"
+
     click_button "Add Space"
     expect(page).to have_content "Central apartment"
     expect(page).to have_content "Great apartment in city centre, 2 minute walk from the tube station"

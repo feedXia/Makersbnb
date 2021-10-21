@@ -33,3 +33,9 @@ def show_all_users
   end
   return result
 end
+
+# def add_user(name:, email:, password:)
+#   connection = PG.connect(dbname: "makers_bnb_test")
+#   query = "INSERT INTO users (name, email, password) VALUES($1, $2, $3);"
+#   connection.exec(query, [name, email, password])
+# end
