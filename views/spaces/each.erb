@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About This Space</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-<body>
-  <main class="spaces">
-  <h1 class="title">About This Space</h1>
-  <h2><%= @space[0]['name'] %></h2>
-  <h4>Total: £<%= @space[0]['price'] %></h4>
-  
-  <div>
-    <p class="each_space_description"><%= @space[0]['description'] %></p>
-  </div>
-  
-  <a href="/requests" onclick="return confirm('Are you sure you want to book this space?')">
-    <button>Request to book</button>
-  </a>
-  </main>
-</body>
-</html>
+<main class="space-info">
+<h1 class="title">About This Space</h1>
+<h2><%= @space[0]['name'] %></h2>
+<h4>Total: £<%= @space[0]['price'] %></h4>
+
+<div>
+  <p class="each_space_description"><%= @space[0]['description'] %></p>
+</div>
+
+<a href="/requests" onclick="return confirm('Are you sure you want to book this space?')">
+  <button>Request to book</button>
+</a>
+</main>
   
