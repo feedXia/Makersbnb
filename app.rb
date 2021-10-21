@@ -51,5 +51,13 @@ class MakersBnB < Sinatra::Base
     "#{params[:name]}, thank you for registration!"
   end
 
+  get "/user/login" do
+    erb :"user/login"
+  end
+
+  post "/user/login" do
+    "Log in success!"
+  end
+
   run! if app_file == $0
 end
