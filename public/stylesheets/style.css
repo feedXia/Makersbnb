@@ -3,6 +3,7 @@ body {
 }
 
 h1 {
+  text-align: center;
   color: blueviolet;
 }
 
@@ -18,6 +19,14 @@ textarea {
   margin-bottom: 2em;
 }
 
+button {
+  padding: 1.5em 2.5em;
+  background-color: blueviolet;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
 .spaces {
   display: flex;
   flex-direction: column;
@@ -41,4 +50,37 @@ textarea {
 
 .pagelink {
   align-items: right;
+}
+
+.page_description {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.each_space_description {
+  text-align: center;
+  padding: 0.5rem 15rem 0.5rem 15rem;
+}
+
+#left {
+  width: 40%;
+  float: left;
+  border: 1px solid navy;
+  padding: 1rem;
+  margin-left: 5rem;
+  background-color: aliceblue;
+  border-radius: 0.25rem;
+  border: 1px solid navy;
+}
+
+#right {
+  width: 40%;
+  float: right;
+  border: 1px solid navy;
+  padding: 1rem;
+  margin-right: 5rem;
+  background-color: aliceblue;
+  border-radius: 0.25rem;
+  border: 1px solid navy;
 }
