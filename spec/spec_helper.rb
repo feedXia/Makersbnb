@@ -1,22 +1,23 @@
 # Bring in the contents of the `app.rb` file. The below is equivalent to: require_relative '../app.rb'
-require File.join(File.dirname(__FILE__), '..', 'app.rb')
+require File.join(File.dirname(__FILE__), "..", "app.rb")
 
 # Require all the testing gems
-require_relative './setup_test_database'
-require 'capybara'
-require 'capybara/rspec'
-require 'rspec'
-require 'simplecov'
-require 'simplecov-console'
+require_relative "./setup_test_database"
+require "capybara"
+require "capybara/rspec"
+require "rspec"
+require "simplecov"
+require "simplecov-console"
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
-  # Want a nice code coverage website? Uncomment this next line!
-  # SimpleCov::Formatter::HTMLFormatter
+# Want a nice code coverage website? Uncomment this next line!
+# SimpleCov::Formatter::HTMLFormatter
 ])
 SimpleCov.start
 
-ENV['ENVIRONMENT'] = 'test'
+ENV["RACK_ENV"] = "test"
+ENV["ENVIRONMENT"] = "test"
 
 # Tell Capybara to talk to BookmarkManager
 Capybara.app = MakersBnB
@@ -70,8 +71,8 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-# The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+  # The settings below are suggested to provide a good initial experience
+  # with RSpec, but feel free to customize to your heart's content.
 =begin
   # This allows you to limit a spec run to individual examples or groups
   # you care about by tagging them with `:focus` metadata. When nothing

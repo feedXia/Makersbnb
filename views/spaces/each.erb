@@ -10,11 +10,12 @@
 <body>
   <main class="spaces">
   <h1 class="title">About This Space</h1>
-  <h2><%= @space[0]['name'] %></h2>
-  <h4>Total: £<%= @space[0]['price'] %></h4>
+  <h2><%= @space.name %></h2>
+  <h4>Total: £<%= @space.price %></h4>
   
   <div>
-    <p class="each_space_description"><%= @space[0]['description'] %></p>
+  <h4>Description: </h4>
+    <p class="each_space_description"><%= @space.description%></p>
   </div>
   
   <a href="/requests" onclick="return confirm('Are you sure you want to book this space?')">

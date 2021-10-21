@@ -1,7 +1,12 @@
 require "pg"
 require_relative "database_connection"
+require "sinatra/activerecord"
 
-class Space
+class Space < ActiveRecord::Base
+  validates :name, presence: true, length: { maximum: 60 }
+  validates :description, presence: true, length: { maximum: 240 }
+  validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
+
   def self.all
     # connection = Space.connect_db
     result = DatabaseConnection.query("SELECT * FROM spaces;")
@@ -19,9 +24,9 @@ class Space
   #   return PG.connect(dbname: db_name)
   # end
 
-  def self.find(id:)
-    # connection = Space.connect_db
-    result = DatabaseConnection.query("SELECT * FROM spaces WHERE id=#{id};")
-    return result
-  end
+  # def self.find(id:)
+  #   # connection = Space.connect_db
+  #   result = DatabaseConnection.query("SELECT * FROM spaces WHERE id=#{id};")
+  #   return result
+  # end
 end

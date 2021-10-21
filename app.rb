@@ -3,8 +3,10 @@ require "sinatra/reloader"
 require "pg"
 require_relative "lib/space"
 require_relative "database_connection_setup"
+require "sinatra/activerecord"
 
 class MakersBnB < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
   configure :development do
     register Sinatra::Reloader
   end
@@ -32,7 +34,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/spaces/:id" do
-    @space = Space.find(id: params[:id])
+    # @space = Space.find(id: params[:id])
+    @space = Space.find(params[:id])
     erb :"spaces/each"
   end
 
