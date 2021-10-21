@@ -42,7 +42,7 @@ RSpec.describe Space do
       connection = PG.connect(dbname: "makers_bnb_test")
       query = "INSERT INTO spaces (id, name, description, price) VALUES($1, $2, $3, $4);"
       page_id = connection.exec(query, [1, "Hagrid's Hut", "Magical place, close to the nature.", 36])
-      expect(Space.find(id: 1)[0]["id"]).to eq Space.all[0]["id"]
+      expect(Space.find(id: 1)[0].id).to eq Space.all[0]["id"]
     end
   end
 end
