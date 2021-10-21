@@ -23,6 +23,8 @@ class MakersBnB < Sinatra::Base
       name: params[:name],
       description: params[:description],
       price: params[:price_night],
+      from: params[:from],
+      to: params[:to],
     )
     redirect "/spaces"
   end
@@ -49,6 +51,11 @@ class MakersBnB < Sinatra::Base
   post "/user/new" do
     User.add(name: params[:name], email: params[:email], password: params[:password])
     "#{params[:name]}, thank you for registration!"
+  end
+
+  post "/search" do
+    @space_available = Space.available(from: params[:user_from], to: params[:user_to])
+    erb :"spaces/search"
   end
 
   run! if app_file == $0
