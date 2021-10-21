@@ -9,10 +9,10 @@ class User
   def self.login(email:, password:)
     query = "SELECT * FROM users WHERE email = $1;"
     result = DatabaseConnection.query(query, [email])
-    p result.values[0]
-    user = result.map do |u|
-      { "name" => u["name"], "email" => u["email"], "password" => u["password"] }
+    # p result.values[0]
+    users = result.map do |user|
+      { "name" => user["name"], "email" => user["email"], "password" => user["password"] }
     end
-    return user.length == 1 && result.values[0][3] == password
+    return users.length == 1 && users[0]["password"] == password
   end
 end

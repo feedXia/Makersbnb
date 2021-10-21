@@ -56,7 +56,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/user/login" do
-    "Log in success!"
+    login_success = User.login(email: params[:email], password: params[:password]) 
+    login_success ? "Log in success!" : "email or password is wrong :("
   end
 
   run! if app_file == $0
