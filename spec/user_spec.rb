@@ -7,4 +7,12 @@ describe User do
       expect(all_users[0]).to eq({ name: "Hermione", email: "hermi@example.com" })
     end
   end
+
+  describe "#login" do
+    it "Logs the user in" do
+      User.add(name: "Hermione", email: "hermi@example.com", password: "bookworm")
+      User.login(email: "hermi@example.com", password: "bookworm")
+      # expect(all_users[0]).to eq({ name: "Hermione", email: "hermi@example.com" })
+    end
+  end
 end
