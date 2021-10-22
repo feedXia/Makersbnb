@@ -106,3 +106,7 @@ To set up the appropriate tables, connect to each database in psql (e.g. `\c mak
 ![Individual Space Pages](https://github.com/feedXia/Makersbnb/blob/ebb772d740490b3f0a75b05ee455319aa847de4b/public/images/Individual%20space%20pages%20model.png)
 
 ![Request to Book](https://github.com/feedXia/Makersbnb/blob/ebb772d740490b3f0a75b05ee455319aa847de4b/public/images/Request%20to%20book%20model.png)
+
+### Demo
+
+https://github.com/delexii/Makersbnb/blob/0318df9021852f3e6f07ea082d9750f4337a92a1/public/Demo%20App.mov
