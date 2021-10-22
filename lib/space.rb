@@ -19,10 +19,10 @@ class Space
     return all_spaces
   end
 
-  def self.add(name:, description:, price:, from:, to:)
-    query = "INSERT INTO spaces (name, description, price, from_date, to_date) 
-            VALUES($1, $2, $3, $4, $5);"
-    DatabaseConnection.query(query, [name, description, price, from, to])
+  def self.add(name:, description:, price:, from:, to:, user_id:)
+    query = "INSERT INTO spaces (name, description, price, from_date, to_date, user_id) 
+            VALUES($1, $2, $3, $4, $5, $6);"
+    DatabaseConnection.query(query, [name, description, price, from, to, user_id])
   end
 
   def self.find(id:)
@@ -48,6 +48,7 @@ class Space
                id: space["id"],
                from: space["from_date"],
                to: space["to_date"],
+               user_id: space["user_id"],
              )
            end
   end

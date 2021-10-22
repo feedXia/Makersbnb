@@ -4,6 +4,6 @@ feature "Review request" do
     visit("/spaces")
     click_link "See space details"
     click_button "Request to book"
-    expect(page).to have_content "Alex House"
+    expect(page).to have_content "You can see all your lovely requests here"
   end
 end

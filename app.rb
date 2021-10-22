@@ -1,14 +1,13 @@
 require "sinatra/base"
 require "sinatra/reloader"
 require "pg"
-require 'sinatra/flash'
+require "sinatra/flash"
 require_relative "lib/space"
 require_relative "lib/user"
 require_relative "lib/request"
 require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
-
   enable :sessions, :method_override
   register Sinatra::Flash
   configure :development do
@@ -19,7 +18,7 @@ class MakersBnB < Sinatra::Base
 
   get "/" do
     @user = User.find(id: session[:user_id])
-    erb :"index"
+    erb :index
   end
 
   get "/spaces/new" do
@@ -94,7 +93,7 @@ class MakersBnB < Sinatra::Base
     erb :"requests/new", :layout => :layout
   end
 
-  post "/spaces/search" do
+  post "/search" do
     # p "SESSION POST:"
     # p session[:spaces_available]
     session[:spaces_available] = Space.available(from: params[:user_from], to: params[:user_to])
@@ -113,12 +112,12 @@ class MakersBnB < Sinatra::Base
     redirect "/requests"
   end
 
-  # post "/requests/new" do
-  #   space = Space.find(id: session[:space_id])
-  #   Request.add(user_id: session[:user_id], space_id: space.id)
-  #   flash[:notice] = "Thanks for your request"
-  #   redirect "/spaces"
-  # end
+  post "/requests/new" do
+    space = Space.find(id: session[:space_id])
+    Request.add(user_id: session[:user_id], space_id: space.id)
+    flash[:notice] = "Thanks for your request"
+    redirect "/spaces"
+  end
 
   run! if app_file == $0
 end
