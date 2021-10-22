@@ -7,6 +7,7 @@ require_relative "lib/request"
 require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
+  enable :sessions, :method_override
   configure :development do
     register Sinatra::Reloader
   end
@@ -24,7 +25,7 @@ class MakersBnB < Sinatra::Base
       name: params[:name],
       description: params[:description],
       price: params[:price_night],
-      user_id: params[:user_id],
+      user_id: session[:user_id],
     )
     redirect "/spaces"
   end
@@ -37,18 +38,6 @@ class MakersBnB < Sinatra::Base
   get "/spaces/:id" do
     @space = Space.find(id: params[:id])
     erb :"spaces/each", :layout => :layout
-  end
-
-  get "/requests" do
-    # @spaces = Space.all
-    # @space = Space.find(id: session[:id])
-    @space = Space.find(id: params[:id])
-    Request.add(user_id: params[:user_id], space_id: space.id)
-    @requests = Request.by_user(user_id: params[:user_id])
-    @spaces = @requests.map do |request|
-      Space.find(id: request.space_id)
-    end
-    erb :"requests/index"
   end
 
   get "/user/new" do
@@ -72,11 +61,31 @@ class MakersBnB < Sinatra::Base
       session[:user_id] = user.id
     else
       flash[:notice] = "Email or password is wrong :("
+      redirect "/"
     end
-    redirect "/"
 
     # login_success ? "Log in success!" : "email or password is wrong :("
   end
+
+  get "/requests" do
+    @space = Space.find(id: session[:space_id])
+    p @space
+    @requested = Request.add(user_id: @space[0].user_id, space_id: session[:space_id])
+    p @requested
+    erb :"requests/new", :layout => :layout
+  end
+
+  post "/requests/:id" do
+    session[:space_id] = params[:id]
+    redirect "/requests"
+  end
+
+  # post "/requests/new" do
+  #   space = Space.find(id: session[:space_id])
+  #   Request.add(user_id: session[:user_id], space_id: space.id)
+  #   flash[:notice] = "Thanks for your request"
+  #   redirect "/spaces"
+  # end
 
   run! if app_file == $0
 end
