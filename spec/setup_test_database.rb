@@ -17,10 +17,10 @@ def show_all_spaces
   return result
 end
 
-def add_space(name:, description:, price:)
+def add_space(name:, description:, price:, from:, to:)
   connection = PG.connect(dbname: "makers_bnb_test")
-  query = "INSERT INTO spaces (name, description, price) VALUES($1, $2, $3);"
-  connection.exec(query, [name, description, price])
+  query = "INSERT INTO spaces (name, description, price, from_date, to_date) VALUES($1, $2, $3, $4, $5);"
+  connection.exec(query, [name, description, price, from, to])
 end
 
 def show_all_users

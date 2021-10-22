@@ -1,10 +1,22 @@
   <main class="spaces">
   <a href="/spaces/new">Add new space</a>
   <h1 class="title">Explore Our Spaces</h1>
+
+<h3> Check Availability: </h3>
+<form action="/spaces/search" method="post">
+  <label class="label" for="user_from">From: </label>
+  <input type="date" name="user_from" placeholder="yyyy-mm-dd">
+  <label class="label" for="user_to">To: </label>
+  <input type="date" name="user_to" placeholder="yyyy-mm-dd">
+  <input type="submit" name ="Search" value="Search" >
+</form>
+<h3> Spaces: </h3>
+
   
   <a href="/spaces/new">
     <button>List a space</button>
   </a>
+
 
   <% @spaces.each do |space| %>
     <section class="space_card">
@@ -19,7 +31,6 @@
       <span class="space_price">
         £<%= space['price'] %> per night
       </span>
-
       <p>
       <a href="/spaces/<%= space['id']%>">See space details</a>
       </p>

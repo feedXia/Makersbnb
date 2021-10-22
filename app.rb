@@ -8,6 +8,7 @@ require_relative "lib/request"
 require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
+
   enable :sessions, :method_override
   register Sinatra::Flash
   configure :development do
@@ -30,6 +31,8 @@ class MakersBnB < Sinatra::Base
       name: params[:name],
       description: params[:description],
       price: params[:price_night],
+      from: params[:from],
+      to: params[:to],
       user_id: session[:user_id],
     )
     redirect "/spaces"
@@ -89,6 +92,20 @@ class MakersBnB < Sinatra::Base
     @requested = Request.add(user_id: @space[0].user_id, space_id: session[:space_id])
     p @requested
     erb :"requests/new", :layout => :layout
+  end
+
+  post "/spaces/search" do
+    # p "SESSION POST:"
+    # p session[:spaces_available]
+    session[:spaces_available] = Space.available(from: params[:user_from], to: params[:user_to])
+    redirect "/search"
+  end
+
+  get "/search" do
+    # p "SESSION GET:"
+    # p session[:spaces_available]
+    @spaces_available = session[:spaces_available]
+    erb :"spaces/search", :layout => :layout
   end
 
   post "/requests/:id" do
