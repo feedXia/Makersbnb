@@ -76,6 +76,7 @@ class MakersBnB < Sinatra::Base
 
   post "/user/signout" do
     session.clear
+    flash[:notice] = "You have been signed out."
     redirect "/"
   end
 
