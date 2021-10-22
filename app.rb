@@ -47,8 +47,10 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/user/new" do
-    user = User.add(name: params[:name], email: params[:email], password: params[:password])
-    session[:user_id] = user.id
+    name, email, password = params[:name], params[:email], params[:password]
+    user = User.add(name: name, email: email, password: password)
+    id = DatabaseConnection.query("SELECT id FROM users WHERE name = '#{name}' and email = '#{email}' and password = '#{password}';")
+    session[:user_id] = id
     redirect "/"
   end
 
