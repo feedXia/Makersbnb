@@ -1,11 +1,13 @@
 require "sinatra/base"
 require "sinatra/reloader"
 require "pg"
+require 'sinatra/flash'
 require_relative "lib/space"
 require_relative "lib/user"
 require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
+  register Sinatra::Flash
   configure :development do
     register Sinatra::Reloader
   end
@@ -28,16 +30,19 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/spaces" do
+    @user = User.find(id: session[:user_id])
     @spaces = Space.all
     erb :"spaces/index", :layout => :layout
   end
 
   get "/spaces/:id" do
+    @user = User.find(id: session[:user_id])
     @space = Space.find(id: params[:id])
     erb :"spaces/each", :layout => :layout
   end
 
   get "/requests" do
+    @user = User.find(id: session[:user_id])
     @spaces = Space.all
     erb :"requests/index"
   end
@@ -67,8 +72,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/user/signout" do
+    @user = User.find(id: session[:user_id])
     session.clear
-    flash[:notice] = "You have been signed out."
     redirect "/"
   end
 

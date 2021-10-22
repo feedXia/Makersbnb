@@ -28,4 +28,16 @@ feature "Adding user" do
     click_button "Log in"
     expect(page).to have_content "Email or password incorrect."
   end
+
+  scenario 'a user can sign out' do
+    add_user(name: "Hermione Granger", email: "hermione@example.com", password: "bookworm")
+    visit "/user/login"
+    fill_in "email", with: "hermione@example.com"
+    fill_in "password", with: "bookworm"
+    click_button "Log in"
+
+    click_button "Sign out"
+
+    expect(page).to have_content 'You have been signed out.'
+  end
 end

@@ -25,6 +25,18 @@ class User
     return user.correct_password?(password) ? user : nil
   end
 
+  def self.find(id:)
+    return nil unless id
+    query = "SELECT * FROM users WHERE id = $1;"
+    result = DatabaseConnection.query(query, [id])
+    User.new(
+      id: result[0]['id'],
+      email: result[0]['email'],
+      name: result[0]["name"],
+      password: result[0]["password"]
+    )
+  end
+
   attr_reader :name, :email, :id
 
   def initialize(name:, email:, id:, password:)
