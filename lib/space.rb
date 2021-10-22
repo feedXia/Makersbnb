@@ -3,7 +3,7 @@ require_relative "database_connection"
 
 class Space
 
-   attr_reader :name, :description, :price, :id, :from, :to, user_id:
+   attr_reader :name, :description, :price, :id, :from, :to, :user_id
   
   def initialize(name:, description:, price:, id:, from:, to:, user_id:)
     @name = name
