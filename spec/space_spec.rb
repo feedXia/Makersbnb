@@ -10,7 +10,7 @@ RSpec.describe Space do
       add_space(name: "Alex House", description: "Spacious and cosy", price: 20)
       add_space(name: "Ewa Mansion", description: "Modern and well-lit", price: 100)
 
-      results = Space.all
+      p results = Space.all
       result1 = results.values[0] # arr of the data point
       result2 = results.values[1]
 

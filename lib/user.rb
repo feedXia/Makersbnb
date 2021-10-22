@@ -10,6 +10,18 @@ class User
     @password = password
   end
 
+  def self.all
+    all_users = DatabaseConnection.query("SELECT * FROM users;")
+    all_users.map do |user|
+      User.new(
+        id: user["id"].to_i,
+        email: user["email"],
+        name: user["name"],
+        password: user["password"],
+      )
+    end
+  end
+
   def self.add(name:, email:, password:)
     query = "INSERT INTO users (name, email, password) VALUES($1, $2, $3);"
     DatabaseConnection.query(query, [name, email, password])
