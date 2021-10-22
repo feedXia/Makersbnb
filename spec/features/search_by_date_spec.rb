@@ -7,12 +7,16 @@ feature "Searching by date range" do
     fill_in "from", with: "2021-10-01"
     fill_in "to", with: "2021-10-03"
     click_button "Add Space"
-    visit("/spaces")
+    # visit("/spaces")
     fill_in "user_from", with: "2021-10-01"
     fill_in "user_to", with: "2021-10-03"
     click_button "Search"
-    visit "/spaces/search"
+    # visit "/spaces/search"
+    # save_and_open_page
     expect(page).to have_content "Central apartment"
     expect(page).to have_content "Great apartment in city centre, 2 minute walk from the tube station"
   end
 end
+
+# ALTER TABLE spaces ADD from_date DATE;
+# ALTER TABLE spaces ADD to_date DATE;

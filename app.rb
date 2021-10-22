@@ -6,6 +6,7 @@ require_relative "lib/user"
 require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
+  enable :sessions
   configure :development do
     register Sinatra::Reloader
   end
@@ -53,9 +54,18 @@ class MakersBnB < Sinatra::Base
     "#{params[:name]}, thank you for registration!"
   end
 
-  post "/search" do
-    @space_available = Space.available(from: params[:user_from], to: params[:user_to])
-    erb :"spaces/search"
+  post "/spaces/search" do
+    # p "SESSION POST:"
+    # p session[:spaces_available]
+    session[:spaces_available] = Space.available(from: params[:user_from], to: params[:user_to])
+    redirect "/search"
+  end
+
+  get "/search" do
+    # p "SESSION GET:"
+    # p session[:spaces_available]
+    @spaces_available = session[:spaces_available]
+    erb :"spaces/search", :layout => :layout
   end
 
   run! if app_file == $0

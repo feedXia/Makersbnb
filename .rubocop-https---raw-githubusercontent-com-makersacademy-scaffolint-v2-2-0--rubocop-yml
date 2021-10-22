@@ -91,7 +91,7 @@ Metrics/CyclomaticComplexity:
 Metrics/ModuleLength:
   Enabled: true
 Metrics/ParameterLists:
-  Enabled: true
+  Enabled: false
 Metrics/PerceivedComplexity:
   Enabled: true
 
