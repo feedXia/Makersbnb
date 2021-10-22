@@ -14,8 +14,11 @@ class MakersBnB < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  enable :sessions
+
   get "/" do
-    erb :index
+    @user = User.find(id: session[:user_id])
+    erb :"index"
   end
 
   get "/spaces/new" do
@@ -75,8 +78,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/user/signout" do
-    @user = User.find(id: session[:user_id])
     session.clear
+    flash[:notice] = "You have been signed out."
     redirect "/"
   end
 
