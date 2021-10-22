@@ -21,7 +21,7 @@ RSpec.describe Request do
     context "given an user_id" do
       it "returns an array with all the requests made by the user" do
         add_space(name: "Cosy Castle Byers", description: "Rustic treehouse in the woods", price: 90, from: "2021-10-26", to: "2021-10-31")
-        add_space(name: "Cosy Hawkins Lab", description: "A perfectly normal laboratory that's definitely not a portal to another dimention. Set in the town of Hawkins where nothing ever happens.", price: 90)
+        add_space(name: "Cosy Hawkins Lab", description: "A perfectly normal laboratory that's definitely not a portal to another dimention. Set in the town of Hawkins where nothing ever happens.", price: 90, from: "2021-10-26", to: "2021-10-31")
         User.add(name: "Eleven", email: "el@strangerthings.com", password: "Mouthbreather")
         spaces = Space.all
         users = User.all
