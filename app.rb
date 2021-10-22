@@ -11,7 +11,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/" do
-    erb :"index"
+    erb :index
   end
 
   get "/spaces/new" do
@@ -50,7 +50,6 @@ class MakersBnB < Sinatra::Base
     user = User.add(name: params[:name], email: params[:email], password: params[:password])
     session[:user_id] = user.id
     redirect "/"
-    # "#{params[:name]}, thank you for registration!"
   end
 
   get "/user/login" do
@@ -65,8 +64,6 @@ class MakersBnB < Sinatra::Base
     else
       "email or password is wrong :("
     end
-
-    # login_success ? "Log in success!" : "email or password is wrong :("
   end
 
   run! if app_file == $0
