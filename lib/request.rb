@@ -23,7 +23,8 @@ class Request
   end
 
   def self.by_user(user_id:)
-    user_requests = DatabaseConnection.query("SELECT * FROM requests WHERE user_id = '#{user_id}';").map do |request|
+    user_requests = DatabaseConnection.query("SELECT * FROM requests WHERE user_id = '#{user_id}';")
+    user_requests.map do |request|
       Request.new(
         id: request["id"],
         user_id: request["user_id"],

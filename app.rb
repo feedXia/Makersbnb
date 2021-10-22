@@ -12,7 +12,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/" do
-    erb :"index"
+    erb :index
   end
 
   get "/spaces/new" do
@@ -70,11 +70,10 @@ class MakersBnB < Sinatra::Base
     user = User.login(email: params[:email], password: params[:password])
     if user
       session[:user_id] = user.id
-      redirect "/"
     else
       flash[:notice] = "Email or password is wrong :("
-      redirect "/"
     end
+    redirect "/"
 
     # login_success ? "Log in success!" : "email or password is wrong :("
   end
