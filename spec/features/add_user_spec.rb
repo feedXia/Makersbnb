@@ -15,10 +15,16 @@ feature "Adding user" do
     fill_in "email", with: "hermione@example.com"
     fill_in "password", with: "bookworm"
     click_button "Sign Up"
+    expect(page).to have_content "Home"
     expect(page).to have_content "Spaces"
-    expect(page).to have_content "Hello, World"
     expect(page).to have_content "Requests"
+    expect(page).to have_content "Add new space"
     expect(page).to have_content "Explore Our Spaces"
+    expect(page).to have_content "Check Availability:"
+    expect(page).to have_content "From: To:"
+    expect(page).to have_content "Spaces:"
+    expect(page).to have_content "List a space"
+    
   end
 
   scenario "Page displays a form that user can input onto" do
