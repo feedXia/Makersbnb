@@ -60,6 +60,13 @@ input[type="submit"] {
   margin: 0;
 }
 
+.space-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .pagelink {
   align-items: right;
 }
@@ -149,12 +156,3 @@ input[type="submit"] {
   width: 60%;
   margin-left: 31.5%;
 }
-
-/* .request_card {
-  background-color: aliceblue;
-  border-radius: 1rem;
-  border: 1px solid navy;
-  padding: 1rem;
-  margin: 1rem 0;
-  width: 80vw;
-} */

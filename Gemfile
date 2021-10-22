@@ -9,3 +9,4 @@ gem "rubocop", "1.20"
 gem "webrick"
 gem "simplecov"
 gem "simplecov-console"
+gem 'sinatra-flash'

@@ -1,6 +1,7 @@
 require "sinatra/base"
 require "sinatra/reloader"
 require "pg"
+require 'sinatra/flash'
 require_relative "lib/space"
 require_relative "lib/user"
 require_relative "lib/request"
@@ -8,6 +9,7 @@ require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
   enable :sessions, :method_override
+  register Sinatra::Flash
   configure :development do
     register Sinatra::Reloader
   end
@@ -31,40 +33,51 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/spaces" do
+    @user = User.find(id: session[:user_id])
     @spaces = Space.all
     erb :"spaces/index", :layout => :layout
   end
 
   get "/spaces/:id" do
+    @user = User.find(id: session[:user_id])
     @space = Space.find(id: params[:id])
     erb :"spaces/each", :layout => :layout
   end
 
+  get "/requests" do
+    @user = User.find(id: session[:user_id])
+    @spaces = Space.all
+    erb :"requests/index", :layout => :layout
+  end
+
   get "/user/new" do
-    erb :"user/new"
+    erb :"user/new", :layout => :layout
   end
 
   post "/user/new" do
     user = User.add(name: params[:name], email: params[:email], password: params[:password])
     session[:user_id] = user.id
-    redirect "/"
-    "#{params[:name]}, thank you for registration!"
+    redirect "/spaces"
   end
 
   get "/user/login" do
-    erb :"user/login"
+    erb :"user/login", :layout => :layout
   end
 
   post "/user/login" do
     user = User.login(email: params[:email], password: params[:password])
     if user
       session[:user_id] = user.id
+      redirect "/spaces"
     else
-      flash[:notice] = "Email or password is wrong :("
-      redirect "/"
+      "Email or password incorrect."
     end
+  end
 
-    # login_success ? "Log in success!" : "email or password is wrong :("
+  post "/user/signout" do
+    @user = User.find(id: session[:user_id])
+    session.clear
+    redirect "/"
   end
 
   get "/requests" do
