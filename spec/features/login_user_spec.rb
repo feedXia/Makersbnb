@@ -16,13 +16,9 @@ feature "Adding user" do
     fill_in "password", with: "bookworm"
     click_button "Log in"
     expect(page).to have_content "Spaces"
+    expect(page).to have_content "Hello, World"
     expect(page).to have_content "Requests"
-    expect(page).to have_content "Welcome to SEAD X BnB!"
-    expect(page).to have_content "Where would you like to stay?"
-    expect(page).to have_content "New user?"
-    expect(page).to have_content "Sign up"
-    expect(page).to have_content "Returning user?"
-    expect(page).to have_content "Log in"
+    expect(page).to have_content "Explore Our Spaces"
   end
 
   scenario "Say that details are not corract if details doesn't match" do
@@ -30,6 +26,6 @@ feature "Adding user" do
     fill_in "email", with: "hermione@example.com"
     fill_in "password", with: "bookworm"
     click_button "Log in"
-    expect(page).to have_content "email or password is wrong :("
+    expect(page).to have_content "Email or password incorrect."
   end
 end
