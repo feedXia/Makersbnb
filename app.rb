@@ -13,7 +13,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/" do
-    erb :"index"
+    erb :index
   end
 
   get "/spaces/new" do
