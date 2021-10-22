@@ -2,8 +2,14 @@ require_relative "database_connection"
 
 class User
   def self.add(name:, email:, password:)
-    query = "INSERT INTO users (name, email, password) VALUES($1, $2, $3);"
-    DatabaseConnection.query(query, [name, email, password])
+    query = "INSERT INTO users (name, email, password) VALUES($1, $2, $3) RETURNING id, name, email;"
+    result = DatabaseConnection.query(query, [name, email, password])
+    user = User.new(
+      id: result[0]["id"],
+      email: result[0]["email"],
+      name: result[0]["name"],
+      password: result[0]["password"]
+    )
   end
 
   def self.login(email:, password:)
@@ -17,6 +23,18 @@ class User
       password: result[0]["password"]
     )
     return user.correct_password?(password) ? user : nil
+  end
+
+  def self.find(id:)
+    return nil unless id
+    query = "SELECT * FROM users WHERE id = $1;"
+    result = DatabaseConnection.query(query, [id])
+    User.new(
+      id: result[0]['id'],
+      email: result[0]['email'],
+      name: result[0]["name"],
+      password: result[0]["password"]
+    )
   end
 
   attr_reader :name, :email, :id
