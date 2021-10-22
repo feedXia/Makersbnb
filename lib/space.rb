@@ -2,9 +2,8 @@ require "pg"
 require_relative "database_connection"
 
 class Space
+  attr_reader :name, :description, :price, :id, :from, :to, :user_id
 
-   attr_reader :name, :description, :price, :id, :from, :to, :user_id
-  
   def initialize(name:, description:, price:, id:, from:, to:, user_id:)
     @name = name
     @id = id
@@ -42,15 +41,14 @@ class Space
 
   def self.pretify_result(spaces)
     return spaces.map do |space|
-      Space.new(
-        name: space["name"], 
-        description: space["description"], 
-        price: space["price"], 
-        id: space["id"],
-        from: space["from_date"],
-        to: space["to_date"]
-      )
-    end
+             Space.new(
+               name: space["name"],
+               description: space["description"],
+               price: space["price"],
+               id: space["id"],
+               from: space["from_date"],
+               to: space["to_date"],
+             )
+           end
   end
-
 end
