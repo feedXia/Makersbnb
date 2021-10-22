@@ -2,6 +2,19 @@ require "pg"
 require_relative "database_connection"
 
 class Space
+
+   attr_reader :name, :description, :price, :id, :from, :to, user_id:
+  
+  def initialize(name:, description:, price:, id:, from:, to:, user_id:)
+    @name = name
+    @id = id
+    @description = description
+    @price = price.to_i
+    @from = from
+    @to = to
+    @user_id = user_id
+  end
+
   def self.all
     all_spaces = DatabaseConnection.query("SELECT * FROM spaces;")
     return all_spaces
@@ -40,13 +53,4 @@ class Space
     end
   end
 
-  attr_reader :name, :description, :price, :id, :from, :to
-  def initialize(name:, description:, price:, id:, from:, to:)
-    @name = name
-    @id = id
-    @description = description
-    @price = price.to_i
-    @from = from
-    @to = to
-  end
 end

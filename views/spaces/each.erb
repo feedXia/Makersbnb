@@ -1,13 +1,17 @@
 <main class="space-info">
 <h1 class="title">About This Space</h1>
-<h2><%= @space[0].name %></h2>
-<h4>Total: £<%= @space[0].price %></h4>
+
+<h2 class="each_space_name"><%= @space[0].name %></h2>
+<h4 class="each_space_price">Total: £<%= @space[0].price %></h4>
+
 
 <div>
   <p class="each_space_description"><%= @space[0].description %></p>
 </div>
 
-<a href="/requests" onclick="return confirm('Are you sure you want to book this space?')">
-  <button>Request to book</button>
-</a>
+<form action="/requests/<%= @space[0].id %>" method="post">
+
+    <button>Request to book</button>
+
+</form>
 </main>
