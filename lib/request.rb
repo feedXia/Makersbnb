@@ -16,9 +16,9 @@ class Request
     RETURNING id, user_id, space_id;"
     result = DatabaseConnection.query(query, [user_id, space_id])
     Request.new(
-      id: result[0]["id"],
-      user_id: result[0]["user_id"],
-      space_id: result[0]["space_id"],
+      id: result[0]["id"].to_i,
+      user_id: result[0]["user_id"].to_i,
+      space_id: result[0]["space_id"].to_i,
     )
   end
 
