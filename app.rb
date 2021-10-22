@@ -44,11 +44,11 @@ class MakersBnB < Sinatra::Base
   get "/requests" do
     @user = User.find(id: session[:user_id])
     @spaces = Space.all
-    erb :"requests/index"
+    erb :"requests/index", :layout => :layout
   end
 
   get "/user/new" do
-    erb :"user/new"
+    erb :"user/new", :layout => :layout
   end
 
   post "/user/new" do
@@ -58,7 +58,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/user/login" do
-    erb :"user/login"
+    erb :"user/login", :layout => :layout
   end
 
   post "/user/login" do
