@@ -37,11 +37,10 @@ feature "Adding user" do
 
     click_button "Sign out"
 
+    expect(page).to have_content "Home"
     expect(page).to have_content "Spaces"
-    expect(page).to have_content "Hello, World"
     expect(page).to have_content "Requests"
-    expect(page).to have_content "Welcome to SEAD X BnB!"
-    expect(page).to have_content "Where would you like to stay?"
+    expect(page).to have_content "Welcome to MakersBnB"
     expect(page).to have_content "New user?"
     expect(page).to have_content "Sign up"
     expect(page).to have_content "Returning user?"
