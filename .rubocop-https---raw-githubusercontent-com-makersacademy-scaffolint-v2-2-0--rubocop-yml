@@ -56,33 +56,33 @@ AllCops:
 Layout/LineLength:
   Enabled: true
   Exclude:
-    - '**/spec/**/*'
-    - '**/test/**/*'
-  Max: 100
+    - "**/spec/**/*"
+    - "**/test/**/*"
+  Max: 150
 
 Metrics/BlockLength:
   Enabled: true
   Exclude:
-    - '**/spec/**/*'
-    - '**/test/**/*'
+    - "**/spec/**/*"
+    - "**/test/**/*"
 
 Metrics/AbcSize:
   Enabled: true
   Exclude:
-    - '**/spec/**/*'
-    - '**/test/**/*'
+    - "**/spec/**/*"
+    - "**/test/**/*"
 
 Metrics/ClassLength:
   Enabled: true
   Exclude:
-  - '**/spec/**/*'
-  - '**/test/**/*'
+    - "**/spec/**/*"
+    - "**/test/**/*"
 
 Metrics/MethodLength:
-  Enabled: true
+  Enabled: false
   Exclude:
-    - '**/spec/**/*'
-    - '**/test/**/*'
+    - "**/spec/**/*"
+    - "**/test/**/*"
 
 Metrics/BlockNesting:
   Enabled: true
@@ -220,14 +220,14 @@ Layout/FirstHashElementIndentation:
   Enabled: true
   EnforcedStyle: consistent
   Exclude: # To handle cases in `let` blocks in tests
-  - '**/spec/**/*'
-  - '**/test/**/*'
+    - "**/spec/**/*"
+    - "**/test/**/*"
 Layout/FirstArrayElementIndentation:
   Enabled: true
   EnforcedStyle: consistent
   Exclude: # To handle cases in `let` blocks in tests
-  - '**/spec/**/*'
-  - '**/test/**/*'
+    - "**/spec/**/*"
+    - "**/test/**/*"
 
 Lint/AmbiguousAssignment:
   Enabled: true
@@ -459,5 +459,5 @@ Style/SymbolLiteral:
 Style/BlockDelimiters:
   Enabled: true
   Exclude: # `let` blocks are commonly multiline in tests
-    - '**/spec/**/*'
-    - '**/test/**/*'
+    - "**/spec/**/*"
+    - "**/test/**/*"
