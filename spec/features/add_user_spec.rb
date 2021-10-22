@@ -18,7 +18,6 @@ feature "Adding user" do
     expect(page).to have_content "Home"
     expect(page).to have_content "Spaces"
     expect(page).to have_content "Requests"
-    expect(page).to have_content "Add new space"
     expect(page).to have_content "Explore Our Spaces"
     expect(page).to have_content "Check Availability:"
     expect(page).to have_content "From: To:"
