@@ -12,14 +12,14 @@
   <nav class="nav-main">
     <a class="nav-link" href="/">Home</a>
     <a class="nav-link" href="/spaces">Spaces</a>
-    <a class="nav-link" href="/requests">Requests</a>           
+    <a class="nav-link" href="/requests">Requests</a>
+    <% if @user %>
+    <form action="/user/signout" method="post">
+      <input type="submit" value="Sign out">
+    </form>
+  <% end %>        
   <br>
   <br>
   </nav>
-  <% if @user %>
-    <form action="/user/signout" method="post">
-      <input type="submit" value="Sign out" />
-    </form>
-  <% end %>
   <%= yield %>
 </body>
