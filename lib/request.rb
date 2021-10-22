@@ -23,11 +23,7 @@ class Request
   end
 
   def self.by_user(user_id:)
-    query = "SELECT requests.id, requests.space_id, requests.user_id FROM requests
-    JOIN spaces ON (spaces.id=space_id) JOIN users
-    ON (spaces.user_id=users.id) WHERE users.id= $1;"
-    result = DatabaseConnection.query(query, [user_id])
-    result.map do |request|
+    user_requests = DatabaseConnection.query("SELECT * FROM requests WHERE user_id = '#{user_id}';").map do |request|
       Request.new(
         id: request["id"],
         user_id: request["user_id"],
