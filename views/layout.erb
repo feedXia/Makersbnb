@@ -13,11 +13,11 @@
     <a class="nav-link" href="/">Home</a>
     <a class="nav-link" href="/spaces">Spaces</a>
     <a class="nav-link" href="/requests">Requests</a>
-
+  </nav>
+  <% if @user %>
     <form action="/user/signout" method="post">
       <input type="submit" value="Sign out" />
     </form>
-
-  </nav>
+  <% end %>
   <%= yield %>
 </body>
