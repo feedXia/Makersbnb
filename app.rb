@@ -4,9 +4,11 @@ require "pg"
 require 'sinatra/flash'
 require_relative "lib/space"
 require_relative "lib/user"
+require_relative "lib/request"
 require_relative "database_connection_setup"
 
 class MakersBnB < Sinatra::Base
+  enable :sessions, :method_override
   register Sinatra::Flash
   configure :development do
     register Sinatra::Reloader
@@ -28,6 +30,7 @@ class MakersBnB < Sinatra::Base
       name: params[:name],
       description: params[:description],
       price: params[:price_night],
+      user_id: session[:user_id],
     )
     redirect "/spaces"
   end
@@ -79,6 +82,26 @@ class MakersBnB < Sinatra::Base
     flash[:notice] = "You have been signed out."
     redirect "/"
   end
+
+  get "/requests" do
+    @space = Space.find(id: session[:space_id])
+    p @space
+    @requested = Request.add(user_id: @space[0].user_id, space_id: session[:space_id])
+    p @requested
+    erb :"requests/new", :layout => :layout
+  end
+
+  post "/requests/:id" do
+    session[:space_id] = params[:id]
+    redirect "/requests"
+  end
+
+  # post "/requests/new" do
+  #   space = Space.find(id: session[:space_id])
+  #   Request.add(user_id: session[:user_id], space_id: space.id)
+  #   flash[:notice] = "Thanks for your request"
+  #   redirect "/spaces"
+  # end
 
   run! if app_file == $0
 end

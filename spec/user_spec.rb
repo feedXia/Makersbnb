@@ -1,5 +1,15 @@
 require "user"
 describe User do
+  describe "#all" do
+    it "returns the user's id, name & email" do
+      User.add(name: "Eleven", email: "el@strangerthings.com", password: "Mouthbreather")
+      User.add(name: "Dart", email: "dart@strangerthings.com", password: "Nougat")
+      users = User.all
+      expect(users[0].id).to be_an(Integer)
+      expect(users[0].name).to eq "Eleven"
+      expect(users[0].email).to eq "el@strangerthings.com"
+    end
+  end
   describe "#add" do
     it "Adds a new user to the DB" do
       User.add(name: "Hermione", email: "hermi@example.com", password: "bookworm")

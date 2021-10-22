@@ -7,7 +7,9 @@
   <p class="each_space_description"><%= @space[0].description %></p>
 </div>
 
-<a href="/requests" onclick="return confirm('Are you sure you want to book this space?')">
-  <button>Request to book</button>
-</a>
+<form action="/requests/<%= @space[0].id %>" method="post">
+
+    <button>Request to book</button>
+
+</form>
 </main>

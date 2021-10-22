@@ -1,6 +1,31 @@
 require_relative "database_connection"
 
 class User
+  attr_reader :id, :name, :email
+
+  def initialize(id:, name:, email:, password:)
+    @name = name
+    @email = email
+    @id = id
+    @password = password
+  end
+  
+  def correct_password?(password)
+    return @password == password
+  end
+  
+  def self.all
+    all_users = DatabaseConnection.query("SELECT * FROM users;")
+    all_users.map do |user|
+      User.new(
+        id: user["id"].to_i,
+        email: user["email"],
+        name: user["name"],
+        password: user["password"],
+      )
+    end
+  end
+
   def self.add(name:, email:, password:)
     query = "INSERT INTO users (name, email, password) VALUES($1, $2, $3) RETURNING id, name, email;"
     result = DatabaseConnection.query(query, [name, email, password])
@@ -20,7 +45,7 @@ class User
       id: result[0]["id"],
       email: result[0]["email"],
       name: result[0]["name"],
-      password: result[0]["password"]
+      password: result[0]["password"],
     )
     return user.correct_password?(password) ? user : nil
   end
@@ -35,18 +60,5 @@ class User
       name: result[0]["name"],
       password: result[0]["password"]
     )
-  end
-
-  attr_reader :name, :email, :id
-
-  def initialize(name:, email:, id:, password:)
-    @name = name
-    @email = email
-    @id = id
-    @password = password
-  end
-
-  def correct_password?(password)
-    return @password == password
   end
 end

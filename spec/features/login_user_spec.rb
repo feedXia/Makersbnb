@@ -15,9 +15,7 @@ feature "Adding user" do
     fill_in "email", with: "hermione@example.com"
     fill_in "password", with: "bookworm"
     click_button "Log in"
-
     expect(page).to have_content "Spaces"
-    expect(page).to have_content "Hello, World"
     expect(page).to have_content "Requests"
     expect(page).to have_content "Explore Our Spaces"
   end
